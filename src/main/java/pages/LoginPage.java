@@ -9,44 +9,54 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.WaitUtility;
 
 public class LoginPage {
-	WaitUtility wait = new WaitUtility(); //Creating Object for the WaitUtility 
+	WaitUtility wait = new WaitUtility(); // Creating Object for the WaitUtility
 	public WebDriver driver;
 
+	public LoginPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
 
-public LoginPage(WebDriver driver) {
-	this.driver=driver;
-	PageFactory.initElements(driver, this);
-}
-@FindBy(xpath = "//input[@placeholder='Username']")WebElement username;
-@FindBy(xpath="//input[@placeholder='Password']")WebElement password;
-@FindBy(xpath= "//button[text() = 'Sign In']")WebElement signInbtn;
-@FindBy(xpath="//p[text()='Dashboard']") WebElement dashboardTile;
-@FindBy(xpath="//b[text()='7rmart supermarket']")WebElement loginText; 
+	@FindBy(xpath = "//input[@placeholder='Username']")
+	WebElement usernameInputField;
+	@FindBy(xpath = "//input[@placeholder='Password']")
+	WebElement passwordInputField;
+	@FindBy(xpath = "//button[text() = 'Sign In']")
+	WebElement signInButton;
+	@FindBy(xpath = "//p[text()='Dashboard']")
+	WebElement dashboardTile;
+	@FindBy(xpath = "//b[text()='7rmart supermarket']")
+	WebElement loginPageHeaderTitle;
 
-public void enterUserName(String usernamevalue) {
-	username.sendKeys(usernamevalue);
-}
-public void enterPassword(String passwordvalue) {
-	password.sendKeys(passwordvalue);
-}
+	public LoginPage enterUsernameValueInUsernameField(String usernameValue) {
+		wait.waitUntilVisibilityOfElement(driver, usernameInputField);
+		usernameInputField.sendKeys(usernameValue);
+		return this;
+	}
 
-public void enterSubmitbutton() { 	
-	wait.waitUntilElementToBeClickable(driver, signInbtn); 
-	signInbtn.click();
-}
+	public LoginPage enterPasswordValueInPasswordField(String passwordValue) {
+		wait.waitUntilVisibilityOfElement(driver, passwordInputField);
+		passwordInputField.sendKeys(passwordValue);
+		return this;
+	}
 
-public boolean isDashboardDisplayed() {
-    try {
-        return dashboardTile.isDisplayed();
-    } catch (NoSuchElementException e) {
-        return false;
-    }
-}
+	public HomePage clickSignInButtonOnLoginPage() {
+		wait.waitUntilElementToBeClickable(driver, signInButton);
+		signInButton.click();
+		return new HomePage(driver);
+	}
 
+//chaining of pages not needed in assertion Methods.
+	public boolean isDashboardTileDisplayed() {
+		try {
+			return dashboardTile.isDisplayed();
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
 
-public String getLoginText() {
-	return loginText.getText();
-			}
-
+	public String getLoginPageHeaderText() {
+		return loginPageHeaderTitle.getText();
+	}
 
 }

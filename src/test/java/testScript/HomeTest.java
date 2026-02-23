@@ -12,25 +12,23 @@ import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class HomeTest extends Base {
-	
-	@Test
+
+	@Test(description = "Verify user login and logout functionality", retryAnalyzer = retry.Retry.class)
 	public void verifyUserLoginAndLogout() throws IOException {
-		
-		String usernamevalue=ExcelUtility.getStringData(0, 0, "LoginPage");
-		String passwordvalue=ExcelUtility.getStringData(0, 1, "LoginPage");
-		
+
+		String usernamevalue = ExcelUtility.getStringData(0, 0, "LoginPage");
+		String passwordvalue = ExcelUtility.getStringData(0, 1, "LoginPage");
+
 		LoginPage login = new LoginPage(driver);
-		login.enterUserName(usernamevalue);
-		login.enterPassword(passwordvalue);
-		login.enterSubmitbutton();
-		
+		login.enterUsernameValueInUsernameField(usernamevalue);
+		login.enterPasswordValueInPasswordField(passwordvalue);
+		login.clickSignInButtonOnLoginPage();
+
 		HomePage home = new HomePage(driver);
-		home.adminUserLogin();
-		home.logout();
-		boolean logoutResult = home.isLoggedout();
+		home.clickOnHomeButtonOnHomePage();
+		home.clickLogoutOptionOnHomePage();
+		boolean logoutResult = home.isRedirectedToLoginPage();
 		Assert.assertTrue(logoutResult, Constants.ERRORMSGFORLOGOUTFAILURE);
-		
-		System.out.println("Display Result of Logout "+home.isLoggedout()); 
 
 	}
 }

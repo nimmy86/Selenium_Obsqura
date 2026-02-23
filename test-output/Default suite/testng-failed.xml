@@ -8,9 +8,7 @@
           <include name="verifyIfUserIsAbleToResetPage"/>
           <include name="browserLaunch"/>
           <include name="driverQuit"/>
-          <include name="verifyIfUserIsAbleToSearchExistingUsers"/>
           <include name="adminUserLogin"/>
-          <include name="verifyIfUserIsAbleToAddNewUsers"/>
         </methods>
       </class> <!-- testScript.AdminUserTest -->
     </classes>

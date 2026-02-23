@@ -9,78 +9,104 @@ import utilities.PageUtility;
 import utilities.WaitUtility;
 
 public class AdminUserPage {
-	
+
 	WebDriver driver;
 	WaitUtility wait = new WaitUtility();
 	PageUtility page = new PageUtility();
 
-	
 	public AdminUserPage(WebDriver driver) {
-		this.driver=driver;
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
-		
+
 	}
-	
-	@FindBy(xpath ="//a[@onclick='click_button(1)']") WebElement newButton;
-	@FindBy(xpath= "//input[@id='username']") WebElement userNameValue;
-	@FindBy(xpath= "//input[@id='password']") WebElement passwordValue;
-	@FindBy(xpath= "//select[@id=\"user_type\"]") WebElement userSelectDrpdwn;
-	@FindBy(xpath= "//button[@class='btn btn-block-sm btn-danger' and @name='Create']") WebElement saveBtn;
-	@FindBy(xpath= "//div[@class='alert alert-success alert-dismissible']") WebElement alertDisplayed;
-	@FindBy(xpath= "//a[@onclick='click_button(2)']") WebElement searchBtn;
-	@FindBy(xpath= "//input[@id='un']") WebElement searchUserNameValue;
-	@FindBy(xpath = "//select[@id='ut']") WebElement searchUserType;
-	@FindBy(xpath= "//button[@class='btn btn-block-sm btn-danger' and @name='Search']") WebElement searchButtonAfterInputs;
-	@FindBy(xpath= "//a[@class='btn btn-rounded btn-warning']") WebElement resetButton;
-	
-	public void clickOnNewButton() {
-		wait.waitUntilElementToBeClickable(driver, newButton);
-		newButton.click();
-		
+
+	@FindBy(xpath = "//a[@onclick='click_button(1)']")
+	WebElement addNewUserButton;
+	@FindBy(xpath = "//input[@id='username']")
+	WebElement usernameInputField;
+	@FindBy(xpath = "//input[@id='password']")
+	WebElement passwordInputField;
+	@FindBy(xpath = "//select[@id=\"user_type\"]")
+	WebElement userTypeDropdown;
+	@FindBy(xpath = "//button[@class='btn btn-block-sm btn-danger' and @name='Create']")
+	WebElement saveButton;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement successAlertMessage;
+	@FindBy(xpath = "//a[@onclick='click_button(2)']")
+	WebElement searchUserButton;
+	@FindBy(xpath = "//input[@id='un']")
+	WebElement searchUsernameInputField;
+	@FindBy(xpath = "//select[@id='ut']")
+	WebElement searchUserTypeDropdown;
+	@FindBy(xpath = "//button[@class='btn btn-block-sm btn-danger' and @name='Search']")
+	WebElement searchButtonAfterEnteringSearchCriteria;
+	@FindBy(xpath = "//a[@class='btn btn-rounded btn-warning']")
+	WebElement resetButton;
+	@FindBy(xpath = "//center[text()='.........RESULT NOT FOUND.......']") WebElement noResultFoundText;
+
+	public void clickAddNewUserButton(){
+		wait.waitUntilElementToBeClickable(driver, addNewUserButton);
+		addNewUserButton.click();
+
 	}
-	public void createNewUsers(String usernameInput, String passwordInput) { 
-		wait.waitUntilVisibilityOfElement(driver, userNameValue);
-		userNameValue.clear();
-		userNameValue.sendKeys(usernameInput);
-		wait.waitUntilVisibilityOfElement(driver, passwordValue);
-		passwordValue.clear();
-		passwordValue.sendKeys(passwordInput);
+
+	public void enterNewUserCredentials(String usernameInput, String passwordInput) {
+		wait.waitUntilVisibilityOfElement(driver, usernameInputField);
+		usernameInputField.clear();
+		usernameInputField.sendKeys(usernameInput);
+		wait.waitUntilVisibilityOfElement(driver, passwordInputField);
+		passwordInputField.clear();
+		passwordInputField.sendKeys(passwordInput);
 	}
-	public void selectUserType(String usertypeValue) {
-		wait.waitUntilVisibilityOfElement(driver, userSelectDrpdwn);
-		/*Calling Dropdown select methods from PageUtility */
-		page.selectDropdownByVisibleText(userSelectDrpdwn, usertypeValue); 
-		/*Select select = new Select(userSelectDrpdwn);
-		select.selectByVisibleText(usertypeValue);*/
+
+	public void selectUserTypeForNewUser(String usertypeValue) {
+		wait.waitUntilVisibilityOfElement(driver, userTypeDropdown);
+		/* Calling Dropdown select methods from PageUtility */
+		page.selectDropdownByVisibleText(userTypeDropdown, usertypeValue);
+		/*
+		 * Select select = new Select(userSelectDrpdwn);
+		 * select.selectByVisibleText(usertypeValue);
+		 */
 	}
-	public void clickSave() {
-		wait.waitUntilElementToBeClickable(driver, saveBtn);
-		saveBtn.click();
+
+	public void clickSaveButtonAfterEnteringNewUserDetails() {
+		wait.waitUntilElementToBeClickable(driver, saveButton);
+		saveButton.click();
 	}
-	
-	public boolean isSuccessAlertDisplayed() {
-		wait.waitUntilVisibilityOfElement(driver, alertDisplayed);
-		return alertDisplayed.isDisplayed();		
+
+	public boolean isSuccessAlertMessageDisplayed() {
+		wait.waitUntilVisibilityOfElement(driver, successAlertMessage);
+		return successAlertMessage.isDisplayed();
 	}
-	
-	public void clickOnSearchButton() {
-		wait.waitUntilElementToBeClickable(driver, searchBtn);
-		searchBtn.click();
+
+	public void clickSearchUserButton() {
+		wait.waitUntilElementToBeClickable(driver, searchUserButton);
+		searchUserButton.click();
 	}
-	
-	public void searchForExistingUsers(String searchUserNameValueInput, String searchUserTypeInput) {
-		wait.waitUntilVisibilityOfElement(driver, searchUserNameValue);
-		searchUserNameValue.sendKeys(searchUserNameValueInput);
-		wait.waitUntilVisibilityOfElement(driver, searchUserType);
-		/*Select select = new Select(searchUserType);
-		 select.selectByVisibleText(searchUserTypeInput); */
-		page.selectDropdownByVisibleText(searchUserType, searchUserTypeInput);
-		wait.waitUntilVisibilityOfElement(driver, searchButtonAfterInputs);
-		searchButtonAfterInputs.click();
+
+	public void searchUserByUsernameAndType(String searchUserNameValueInput,
+			String searchUserTypeInput) {
+		wait.waitUntilVisibilityOfElement(driver, searchUsernameInputField);
+		searchUsernameInputField.sendKeys(searchUserNameValueInput);
+		wait.waitUntilVisibilityOfElement(driver, searchUserTypeDropdown);
+		/*
+		 * Select select = new Select(searchUserType);
+		 * select.selectByVisibleText(searchUserTypeInput);
+		 */
+		page.selectDropdownByVisibleText(searchUserTypeDropdown, searchUserTypeInput);
+		wait.waitUntilVisibilityOfElement(driver, searchButtonAfterEnteringSearchCriteria);
+		searchButtonAfterEnteringSearchCriteria.click();
 	}
-	
-	public void clickOnResetButton() {
+
+	public void clickResetButton() {
 		wait.waitUntilElementToBeClickable(driver, resetButton);
 		resetButton.click();
+	}
+	public boolean isNoResultMessageDisplayed() {
+	    try {
+	        return noResultFoundText.isDisplayed();
+	    } catch (Exception e) {
+	        return false;
+	    }
 	}
 }
