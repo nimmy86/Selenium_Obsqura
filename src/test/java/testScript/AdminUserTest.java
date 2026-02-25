@@ -15,8 +15,9 @@ import utilities.ExcelUtility;
 import utilities.FakerUtility;
 
 public class AdminUserTest extends Base {
-	@BeforeMethod(description = "This Method is used to Login into the Application and Navigate to the Admin Users Page")
-	public void adminUserLogin() throws IOException {
+
+	@Test(description = "This Method is used to Add New Users in the Admin User Page")
+	public void verifyIfUserIsAbleToAddNewUsers() throws IOException {
 		String usernamevalue = ExcelUtility.getStringData(0, 0, "LoginPage");
 		String passwordvalue = ExcelUtility.getStringData(0, 1, "LoginPage");
 
@@ -26,10 +27,7 @@ public class AdminUserTest extends Base {
 		login.clickSignInButtonOnLoginPage();
 		HomePage home = new HomePage(driver);
 		home.clickOnMoreInfoAdminUsersPage();
-	}
-
-	@Test(description = "This Method is used to Add New Users in the Admin User Page")
-	public void verifyIfUserIsAbleToAddNewUsers() {
+		
 		AdminUserPage admin = new AdminUserPage(driver);
 		admin.clickAddNewUserButton();
 		FakerUtility faker = new FakerUtility();
@@ -45,6 +43,16 @@ public class AdminUserTest extends Base {
 
 	@Test(description = "This Method is used to search for exisiting users in the Admin User Page")
 	public void verifyIfUserIsAbleToSearchExistingUsers() throws IOException {
+		String usernamevalue = ExcelUtility.getStringData(0, 0, "LoginPage");
+		String passwordvalue = ExcelUtility.getStringData(0, 1, "LoginPage");
+
+		LoginPage login = new LoginPage(driver);
+		login.enterUsernameValueInUsernameField(usernamevalue);
+		login.enterPasswordValueInPasswordField(passwordvalue);
+		login.clickSignInButtonOnLoginPage();
+		HomePage home = new HomePage(driver);
+		home.clickOnMoreInfoAdminUsersPage();
+		
 		String existingUsername = ExcelUtility.getStringData(0, 0, "AdminUserPage");
 
 		AdminUserPage admin = new AdminUserPage(driver);
@@ -55,7 +63,17 @@ public class AdminUserTest extends Base {
 	}
 
 	@Test(description = "This Method is used to Reset the Admin User Page")
-	public void verifyIfUserIsAbleToResetPage() {
+	public void verifyIfUserIsAbleToResetPage() throws IOException {
+		String usernamevalue = ExcelUtility.getStringData(0, 0, "LoginPage");
+		String passwordvalue = ExcelUtility.getStringData(0, 1, "LoginPage");
+
+		LoginPage login = new LoginPage(driver);
+		login.enterUsernameValueInUsernameField(usernamevalue);
+		login.enterPasswordValueInPasswordField(passwordvalue);
+		login.clickSignInButtonOnLoginPage();
+		HomePage home = new HomePage(driver);
+		home.clickOnMoreInfoAdminUsersPage();
+		
 		AdminUserPage admin = new AdminUserPage(driver);
 		admin.clickResetButton();
 		Assert.assertFalse(admin.isNoResultMessageDisplayed(), Constants.ERRORMESSAGEFORRESETFAIL

@@ -15,8 +15,9 @@ import utilities.ExcelUtility;
 
 public class ManageNewsTest extends Base {
 
-	@BeforeMethod(description = "Login as admin user and navigate to Manage News page")
-	public void adminUserLogin() throws IOException {
+
+	@Test(description = "Verify user can add news successfully")
+	public void verifyUserIsAbleToAddNews() throws IOException {
 		String usernamevalue = ExcelUtility.getStringData(0, 0, "LoginPage");
 		String passwordvalue = ExcelUtility.getStringData(0, 1, "LoginPage");
 
@@ -26,10 +27,7 @@ public class ManageNewsTest extends Base {
 		login.clickSignInButtonOnLoginPage();
 		HomePage home = new HomePage(driver);
 		home.clickOnMoreInfoMangeNewsPage();
-	}
-
-	@Test(description = "Verify user can add news successfully")
-	public void verifyUserIsAbleToAddNews() throws IOException {
+		
 		ManageNewsPage managenews = new ManageNewsPage(driver);
 
 		managenews.clickAddNewNewsButton();
@@ -43,6 +41,16 @@ public class ManageNewsTest extends Base {
 
 	@Test(description = "Verify user can search existing news")
 	public void verifyUserIsAbleToSearchNews() throws IOException {
+		String usernamevalue = ExcelUtility.getStringData(0, 0, "LoginPage");
+		String passwordvalue = ExcelUtility.getStringData(0, 1, "LoginPage");
+
+		LoginPage login = new LoginPage(driver);
+		login.enterUsernameValueInUsernameField(usernamevalue);
+		login.enterPasswordValueInPasswordField(passwordvalue);
+		login.clickSignInButtonOnLoginPage();
+		HomePage home = new HomePage(driver);
+		home.clickOnMoreInfoMangeNewsPage();
+		
 		ManageNewsPage managenews = new ManageNewsPage(driver);
 
 		managenews.clickSearchNewsButton();
@@ -54,7 +62,17 @@ public class ManageNewsTest extends Base {
 	}
 
 	@Test(description = "Verify user can reset news search results")
-	public void verifyUserIsAbleToResetNews() {
+	public void verifyUserIsAbleToResetNews() throws IOException {
+		String usernamevalue = ExcelUtility.getStringData(0, 0, "LoginPage");
+		String passwordvalue = ExcelUtility.getStringData(0, 1, "LoginPage");
+
+		LoginPage login = new LoginPage(driver);
+		login.enterUsernameValueInUsernameField(usernamevalue);
+		login.enterPasswordValueInPasswordField(passwordvalue);
+		login.clickSignInButtonOnLoginPage();
+		HomePage home = new HomePage(driver);
+		home.clickOnMoreInfoMangeNewsPage();
+		
 		ManageNewsPage managenews = new ManageNewsPage(driver);
 		managenews.clickResetButton();
 		Assert.assertFalse(managenews.isNoSearchResultMessageDisplayed(), Constants.ERRORMESSAGEFORRESETFAIL);

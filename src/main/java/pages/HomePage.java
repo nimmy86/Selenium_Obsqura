@@ -37,7 +37,6 @@ public class HomePage {
 	}
 
 	public LoginPage clickLogoutOptionOnHomePage() {
-		wait.waitUntilElementToBeClickable(driver, adminButton);
 		adminButton.click();
 
 		wait.waitUntilElementToBeClickable(driver, logoutBtn);

@@ -29,13 +29,11 @@ public class LoginPage {
 	WebElement loginPageHeaderTitle;
 
 	public LoginPage enterUsernameValueInUsernameField(String usernameValue) {
-		wait.waitUntilVisibilityOfElement(driver, usernameInputField);
 		usernameInputField.sendKeys(usernameValue);
 		return this;
 	}
 
 	public LoginPage enterPasswordValueInPasswordField(String passwordValue) {
-		wait.waitUntilVisibilityOfElement(driver, passwordInputField);
 		passwordInputField.sendKeys(passwordValue);
 		return this;
 	}

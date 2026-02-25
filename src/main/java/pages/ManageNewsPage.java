@@ -41,7 +41,6 @@ public class ManageNewsPage {
 	}
 
 	public void enterNewsContent(String newsTextValue) {
-		wait.waitUntilVisibilityOfElement(driver, newsContentTextArea);
 		newsContentTextArea.sendKeys(newsTextValue);
 	}
 
@@ -60,12 +59,10 @@ public class ManageNewsPage {
 	}
 
 	public void enterNewsTitleToSearch(String newsTextValueToSearch) {
-		wait.waitUntilVisibilityOfElement(driver, searchNewsTitleInputField);
 		searchNewsTitleInputField.sendKeys(newsTextValueToSearch);
 	}
 
 	public void clickSearchButtonAfterEnteringNews() {
-		wait.waitUntilElementToBeClickable(driver, searchNewsSubmitButton);
 		searchNewsSubmitButton.click();
 	}
 
@@ -76,7 +73,6 @@ public class ManageNewsPage {
 
 	public boolean isNoSearchResultMessageDisplayed() {
 		try {
-			wait.waitUntilVisibilityOfElement(driver, noSearchResultText);
 			return noSearchResultText.isDisplayed();
 		} catch (Exception e) {
 			return false;

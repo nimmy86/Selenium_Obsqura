@@ -60,7 +60,6 @@ public class AdminUserPage {
 	}
 
 	public void selectUserTypeForNewUser(String usertypeValue) {
-		wait.waitUntilVisibilityOfElement(driver, userTypeDropdown);
 		/* Calling Dropdown select methods from PageUtility */
 		page.selectDropdownByVisibleText(userTypeDropdown, usertypeValue);
 		/*
@@ -80,21 +79,17 @@ public class AdminUserPage {
 	}
 
 	public void clickSearchUserButton() {
-		wait.waitUntilElementToBeClickable(driver, searchUserButton);
 		searchUserButton.click();
 	}
 
 	public void searchUserByUsernameAndType(String searchUserNameValueInput,
 			String searchUserTypeInput) {
-		wait.waitUntilVisibilityOfElement(driver, searchUsernameInputField);
 		searchUsernameInputField.sendKeys(searchUserNameValueInput);
-		wait.waitUntilVisibilityOfElement(driver, searchUserTypeDropdown);
 		/*
 		 * Select select = new Select(searchUserType);
 		 * select.selectByVisibleText(searchUserTypeInput);
 		 */
 		page.selectDropdownByVisibleText(searchUserTypeDropdown, searchUserTypeInput);
-		wait.waitUntilVisibilityOfElement(driver, searchButtonAfterEnteringSearchCriteria);
 		searchButtonAfterEnteringSearchCriteria.click();
 	}
 
