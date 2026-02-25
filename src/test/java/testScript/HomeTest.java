@@ -12,6 +12,7 @@ import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class HomeTest extends Base {
+	HomePage home;
 
 	@Test(description = "Verify user login and logout functionality", retryAnalyzer = retry.Retry.class)
 	public void verifyUserLoginAndLogout() throws IOException {
@@ -20,13 +21,12 @@ public class HomeTest extends Base {
 		String passwordvalue = ExcelUtility.getStringData(0, 1, "LoginPage");
 
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameValueInUsernameField(usernamevalue);
-		login.enterPasswordValueInPasswordField(passwordvalue);
-		login.clickSignInButtonOnLoginPage();
+		login.enterUsernameValueInUsernameField(usernamevalue).enterPasswordValueInPasswordField(passwordvalue);
+		home=login.clickSignInButtonOnLoginPage();
 
-		HomePage home = new HomePage(driver);
+		//HomePage home = new HomePage(driver);
 		home.clickOnHomeButtonOnHomePage();
-		home.clickLogoutOptionOnHomePage();
+		login=home.clickLogoutOptionOnHomePage();
 		boolean logoutResult = home.isRedirectedToLoginPage();
 		Assert.assertTrue(logoutResult, Constants.ERRORMSGFORLOGOUTFAILURE);
 

@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-02-25T19:55:59 IST" name="Suite" finished-at="2026-02-25T19:56:54 IST" duration-ms="54460">
+  <suite started-at="2026-02-25T21:54:25 IST" name="Suite" finished-at="2026-02-25T21:55:05 IST" duration-ms="39948">
     <groups>
     </groups>
-    <test started-at="2026-02-25T19:55:59 IST" name="Test1" finished-at="2026-02-25T19:56:54 IST" duration-ms="54460">
+    <test started-at="2026-02-25T21:54:25 IST" name="Test1" finished-at="2026-02-25T21:55:05 IST" duration-ms="39948">
       <class name="testScript.ManageNewsTest">
-        <test-method is-config="true" signature="browserLaunch(java.lang.String)[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T19:55:59 IST" name="browserLaunch" finished-at="2026-02-25T19:56:03 IST" duration-ms="3940" status="PASS">
+        <test-method is-config="true" signature="browserLaunch(java.lang.String)[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T21:54:25 IST" name="browserLaunch" finished-at="2026-02-25T21:54:30 IST" duration-ms="4616" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserLaunch -->
-        <test-method signature="verifyUserIsAbleToAddNews()[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T19:56:03 IST" name="verifyUserIsAbleToAddNews" description="Verify user can add news successfully" finished-at="2026-02-25T19:56:14 IST" duration-ms="10781" status="PASS">
+        <test-method signature="verifyUserIsAbleToAddNews()[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T21:54:30 IST" name="verifyUserIsAbleToAddNews" description="Verify user can add news successfully" finished-at="2026-02-25T21:54:35 IST" duration-ms="5805" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyUserIsAbleToAddNews -->
-        <test-method is-config="true" signature="driverQuit(org.testng.ITestResult)[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T19:56:14 IST" name="driverQuit" finished-at="2026-02-25T19:56:14 IST" duration-ms="15" status="PASS">
+        <test-method is-config="true" signature="driverQuit(org.testng.ITestResult)[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T21:54:35 IST" name="driverQuit" finished-at="2026-02-25T21:54:35 IST" duration-ms="4" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -33,7 +33,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- driverQuit -->
-        <test-method is-config="true" signature="browserLaunch(java.lang.String)[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T19:56:14 IST" name="browserLaunch" finished-at="2026-02-25T19:56:19 IST" duration-ms="4849" status="PASS">
+        <test-method is-config="true" signature="browserLaunch(java.lang.String)[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T21:54:35 IST" name="browserLaunch" finished-at="2026-02-25T21:54:40 IST" duration-ms="4214" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -44,11 +44,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserLaunch -->
-        <test-method signature="verifyUserIsAbleToResetNews()[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T19:56:19 IST" name="verifyUserIsAbleToResetNews" description="Verify user can reset news search results" finished-at="2026-02-25T19:56:31 IST" duration-ms="11782" status="PASS">
+        <test-method signature="verifyUserIsAbleToResetNews()[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T21:54:40 IST" name="verifyUserIsAbleToResetNews" description="Verify user can reset news search results" finished-at="2026-02-25T21:54:49 IST" duration-ms="9607" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyUserIsAbleToResetNews -->
-        <test-method is-config="true" signature="driverQuit(org.testng.ITestResult)[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T19:56:31 IST" name="driverQuit" finished-at="2026-02-25T19:56:31 IST" duration-ms="10" status="PASS">
+        <test-method is-config="true" signature="driverQuit(org.testng.ITestResult)[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T21:54:49 IST" name="driverQuit" finished-at="2026-02-25T21:54:49 IST" duration-ms="2" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -59,7 +59,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- driverQuit -->
-        <test-method is-config="true" signature="browserLaunch(java.lang.String)[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T19:56:31 IST" name="browserLaunch" finished-at="2026-02-25T19:56:36 IST" duration-ms="4739" status="PASS">
+        <test-method is-config="true" signature="browserLaunch(java.lang.String)[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T21:54:49 IST" name="browserLaunch" finished-at="2026-02-25T21:54:53 IST" duration-ms="4074" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -70,11 +70,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserLaunch -->
-        <test-method signature="verifyUserIsAbleToSearchNews()[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T19:56:36 IST" name="verifyUserIsAbleToSearchNews" description="Verify user can search existing news" finished-at="2026-02-25T19:56:54 IST" duration-ms="18125" status="PASS">
+        <test-method signature="verifyUserIsAbleToSearchNews()[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T21:54:53 IST" name="verifyUserIsAbleToSearchNews" description="Verify user can search existing news" finished-at="2026-02-25T21:55:05 IST" duration-ms="11500" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyUserIsAbleToSearchNews -->
-        <test-method is-config="true" signature="driverQuit(org.testng.ITestResult)[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T19:56:54 IST" name="driverQuit" finished-at="2026-02-25T19:56:54 IST" duration-ms="7" status="PASS">
+        <test-method is-config="true" signature="driverQuit(org.testng.ITestResult)[pri:0, instance:testScript.ManageNewsTest@21be3395]" started-at="2026-02-25T21:55:05 IST" name="driverQuit" finished-at="2026-02-25T21:55:05 IST" duration-ms="2" status="PASS">
           <params>
             <param index="0">
               <value>

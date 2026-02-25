@@ -8,18 +8,19 @@ import org.testng.annotations.Test;
 
 import automationCore.Base;
 import constants.Constants;
+import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class LoginTest extends Base {
+	HomePage home; //ref variable
 	@Test(priority = 1, description = "Validating User Login With Valid Credentials", groups = { "smoke" })
 	public void verifyValidUserNameWithValidPassword() throws IOException {
 		String usernameValue = ExcelUtility.getStringData(0, 0, "LoginPage");
 		String passwordValue = ExcelUtility.getStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameValueInUsernameField(usernameValue);
-		login.enterPasswordValueInPasswordField(passwordValue);
-		login.clickSignInButtonOnLoginPage();
+		login.enterUsernameValueInUsernameField(usernameValue).enterPasswordValueInPasswordField(passwordValue); //driver control is still in login page
+		home=login.clickSignInButtonOnLoginPage(); //control goes to login page
 		boolean dashboardDisplay = login.isDashboardTileDisplayed();
 		Assert.assertTrue(dashboardDisplay, Constants.INVALIDCREDENTIALERROR); // if fail then the msg to be displayed
 																				// in 2nd parameter
@@ -43,9 +44,8 @@ public class LoginTest extends Base {
 		String usernamevalue = ExcelUtility.getStringData(2, 0, "LoginPage");
 		String passwordvalue = ExcelUtility.getStringData(2, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameValueInUsernameField(usernamevalue);
-		login.enterPasswordValueInPasswordField(passwordvalue);
-		login.clickSignInButtonOnLoginPage();
+		login.enterUsernameValueInUsernameField(usernamevalue).enterPasswordValueInPasswordField(passwordvalue).clickSignInButtonOnLoginPage();
+		//invalid creds, so control won't go to next page
 		String expectedText = "7rmart supermarket";
 		String actual = login.getLoginPageHeaderText();
 		Assert.assertEquals(actual, expectedText, Constants.ERRORMESSAGEFORINVALIDLOGIN);
@@ -58,9 +58,7 @@ public class LoginTest extends Base {
 		// String usernamevalue=ExcelUtility.getStringData(3, 0, "LoginPage");
 		// String passwordvalue=ExcelUtility.getStringData(3, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameValueInUsernameField(usernamevalue);
-		login.enterPasswordValueInPasswordField(passwordvalue);
-		login.clickSignInButtonOnLoginPage();
+		login.enterUsernameValueInUsernameField(usernamevalue).enterPasswordValueInPasswordField(passwordvalue).clickSignInButtonOnLoginPage();
 		String expectedText = "7rmart supermarket";
 		String actual = login.getLoginPageHeaderText();
 		Assert.assertEquals(actual, expectedText, Constants.ERRORMESSAGEFORINVALIDLOGIN);

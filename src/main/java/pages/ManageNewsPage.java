@@ -35,40 +35,47 @@ public class ManageNewsPage {
 	@FindBy(xpath = "//center[text()='.........RESULT NOT FOUND.......']")
 	WebElement noSearchResultText;
 
-	public void clickAddNewNewsButton() {
+	public ManageNewsPage clickAddNewNewsButton() {
 		wait.waitUntilElementToBeClickable(driver, newNewsButton);
 		newNewsButton.click();
+		return this;
 	}
 
-	public void enterNewsContent(String newsTextValue) {
+	public ManageNewsPage enterNewsContent(String newsTextValue) {
 		newsContentTextArea.sendKeys(newsTextValue);
+		return this;
 	}
 
-	public void clickSaveNewsButton() {
+	public ManageNewsPage clickSaveNewsButton() {
 		wait.waitUntilElementToBeClickable(driver, saveNewsButton);
 		saveNewsButton.click();
+		return this;
 	}
 
 	public boolean isSuccessAlertMessageDisplayed() {
 		return successAlertMessage.isDisplayed();
 	}
 
-	public void clickSearchNewsButton() {
+	public ManageNewsPage clickSearchNewsButton() {
 		wait.waitUntilElementToBeClickable(driver, searchNewsButton);
 		searchNewsButton.click();
+		return this;
 	}
 
-	public void enterNewsTitleToSearch(String newsTextValueToSearch) {
+	public ManageNewsPage enterNewsTitleToSearch(String newsTextValueToSearch) {
 		searchNewsTitleInputField.sendKeys(newsTextValueToSearch);
+		return this;
 	}
 
-	public void clickSearchButtonAfterEnteringNews() {
+	public ManageNewsPage clickSearchButtonAfterEnteringNews() {
 		searchNewsSubmitButton.click();
+		return this;
 	}
 
-	public void clickResetButton() {
+	public ManageNewsPage clickResetButton() {
 		wait.waitUntilElementToBeClickable(driver, resetButton);
 		resetButton.click();
+		return this;
 	}
 
 	public boolean isNoSearchResultMessageDisplayed() {

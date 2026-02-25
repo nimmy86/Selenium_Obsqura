@@ -42,35 +42,37 @@ public class AdminUserPage {
 	WebElement searchButtonAfterEnteringSearchCriteria;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-warning']")
 	WebElement resetButton;
-	@FindBy(xpath = "//center[text()='.........RESULT NOT FOUND.......']") WebElement noResultFoundText;
+	@FindBy(xpath = "//center[text()='.........RESULT NOT FOUND.......']")
+	WebElement noResultFoundText;
 
-	public void clickAddNewUserButton(){
+	public AdminUserPage clickAddNewUserButton() {
 		wait.waitUntilElementToBeClickable(driver, addNewUserButton);
 		addNewUserButton.click();
+		return this;
 
 	}
 
-	public void enterNewUserCredentials(String usernameInput, String passwordInput) {
+	public AdminUserPage enterNewUserCredentials(String usernameInput, String passwordInput) {
 		wait.waitUntilVisibilityOfElement(driver, usernameInputField);
 		usernameInputField.clear();
 		usernameInputField.sendKeys(usernameInput);
 		wait.waitUntilVisibilityOfElement(driver, passwordInputField);
 		passwordInputField.clear();
 		passwordInputField.sendKeys(passwordInput);
+		return this;
 	}
 
-	public void selectUserTypeForNewUser(String usertypeValue) {
+	public AdminUserPage selectUserTypeForNewUser(String usertypeValue) {
 		/* Calling Dropdown select methods from PageUtility */
 		page.selectDropdownByVisibleText(userTypeDropdown, usertypeValue);
-		/*
-		 * Select select = new Select(userSelectDrpdwn);
-		 * select.selectByVisibleText(usertypeValue);
-		 */
+		return this;
+
 	}
 
-	public void clickSaveButtonAfterEnteringNewUserDetails() {
+	public AdminUserPage clickSaveButtonAfterEnteringNewUserDetails() {
 		wait.waitUntilElementToBeClickable(driver, saveButton);
 		saveButton.click();
+		return this;
 	}
 
 	public boolean isSuccessAlertMessageDisplayed() {
@@ -78,30 +80,30 @@ public class AdminUserPage {
 		return successAlertMessage.isDisplayed();
 	}
 
-	public void clickSearchUserButton() {
+	public AdminUserPage clickSearchUserButton() {
 		searchUserButton.click();
+		return this;
 	}
 
-	public void searchUserByUsernameAndType(String searchUserNameValueInput,
-			String searchUserTypeInput) {
+	public AdminUserPage searchUserByUsernameAndType(String searchUserNameValueInput, String searchUserTypeInput) {
 		searchUsernameInputField.sendKeys(searchUserNameValueInput);
-		/*
-		 * Select select = new Select(searchUserType);
-		 * select.selectByVisibleText(searchUserTypeInput);
-		 */
+
 		page.selectDropdownByVisibleText(searchUserTypeDropdown, searchUserTypeInput);
 		searchButtonAfterEnteringSearchCriteria.click();
+		return this;
 	}
 
-	public void clickResetButton() {
+	public AdminUserPage clickResetButton() {
 		wait.waitUntilElementToBeClickable(driver, resetButton);
 		resetButton.click();
+		return this;
 	}
+
 	public boolean isNoResultMessageDisplayed() {
-	    try {
-	        return noResultFoundText.isDisplayed();
-	    } catch (Exception e) {
-	        return false;
-	    }
+		try {
+			return noResultFoundText.isDisplayed();
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }
